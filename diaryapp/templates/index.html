@@ -21,10 +21,10 @@
                 <a class="navbar-brand" href="#">Diary app</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add</a>
+                        <a class="nav-link" href="/add">Add</a>
                     </li>
                     
                 </ul>
@@ -40,46 +40,17 @@
 
         <div class="row">
 
-
+          {% for data in datas %}
             <div class="card col-sm-11 col-md-5 my-1 mx-auto bg-white">
                 <div class="card-body bg-white">
-                    <h5 class="card-title">Heading</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Date and time (tags optional)</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="./blog.html" class="card-link">Go to</a>
+                    <h5 class="card-title">{{data.heading}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{data.time}}</h6>
+                    <p class="card-text">{{data.body}}</p>
+                    <a href="/diary" class="card-link">Go to</a>
                 </div>
             </div>
+           {% endfor %}
            
-            <div class="card col-sm-11 col-md-5 my-1 mx-auto bg-white">
-                <div class="card-body bg-white">
-                    <h5 class="card-title">Heading</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Date and time (tags optional)</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="./blog.html" class="card-link">Go to</a>
-                </div>
-            </div>
-
-            <div class="card col-sm-11 col-md-5 my-1 mx-auto bg-white">
-                <div class="card-body bg-white">
-                    <h5 class="card-title">Heading</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Date and time (tags optional)</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="./blog.html" class="card-link">Go to</a>
-                </div>
-            </div>
-
-            <div class="card col-sm-11 col-md-5 my-1 mx-auto bg-white">
-                <div class="card-body bg-white">
-                    <h5 class="card-title">Heading</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Date and time (tags optional)</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="./blog.html" class="card-link">Go to</a>
-                </div>
-            </div>
 
         </div>
     </div>
