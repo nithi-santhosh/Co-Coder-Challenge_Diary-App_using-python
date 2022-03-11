@@ -28,10 +28,18 @@
                     </li>
                     
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form method="post" class="d-flex">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <div>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </nav>
@@ -40,13 +48,13 @@
 
         <div class="row">
 
-          {% for data in datas %}
+          {% for data in datas reversed %}
             <div class="card col-sm-11 col-md-5 my-1 mx-auto bg-white">
                 <div class="card-body bg-white">
                     <h5 class="card-title">{{data.heading}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{data.time}}</h6>
-                    <p class="card-text">{{data.body}}</p>
-                    <a href="/diary" class="card-link">Go to</a>
+                    <p class="card-text">{{data.body|truncatewords:20}}</p>
+                    <a href="/diary/{{data.id}}" class="card-link">Go to</a>
                 </div>
             </div>
            {% endfor %}
@@ -54,7 +62,7 @@
 
         </div>
     </div>
-
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
